@@ -1,0 +1,120 @@
+<html>
+    <head>
+   
+    <style>	#di{margin-left:180px;}
+    body{background-image:url("Capture.PNG");
+	background-repeat:no repeat;
+	background-size:cover;}   
+   #img{margin-left:200px;
+		}
+		div button{
+		font-size:20;
+		border-raduis:30;
+		background:#DB7093;}
+	   #sp{color:#white;
+	   font-weight:bold;
+	   font-size:25;
+	   }
+			div button:hover{
+		background:#40E0D0;}
+			
+        </style>
+    </head>
+    <body>
+        <div id="di">
+<h1 style="color:8B0000;margin-left:140;">Learn The English Letters </h1>
+    <span id="sp">enter number of letters</span> 
+	<input id="inp" type="number" min=1 max=26 style="background:#DB7093;">
+        <button id="fff" >generate</button>
+        <div id="d"> </div>
+          <div id="m"> </div>
+          <div id="imges" hidden="true"> 
+		  <image src="" id="img" width=240 height=260></div>
+		  </div>
+        <script>
+		var c=0;
+            var di=document.getElementById("d");
+			var gen=document.getElementById("fff");
+            
+                        function ran(max,min)
+            {
+                return Math.floor(Math.random()*(max-min+1)+min);
+                
+            }
+            
+            function pp(x){
+                di.innerHTML="";  
+                var arr=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P'
+                        ,'Q','R','S','T','U','V','W','X','Y','Z'];
+                    for(var i=0;i<x;i++){                      
+                        var s=document.createElement("button");
+                     
+                          var s2=document.createTextNode(arr[ran(25,0)]);
+                                 
+                         s.appendChild(s2);
+                           di.appendChild(s);
+                          s.addEventListener("click",function(e)
+                                              { 
+											  var nameimg=e.target.textContent;
+											  document.getElementById("img").src ="images/"+nameimg+".jpg";
+											 document.getElementById("imges").removeAttribute("hidden");
+											 Letterbutton(e);
+											
+                         }   ); 
+}}
+
+              fff.addEventListener("click" ,function(e){
+           
+            var num1=document.getElementById("inp").value;
+             pp(num1);
+			  generatebutton(e);
+            });
+        
+	   window.addEventListener("load",function(e){
+	   alert("Welcome To Learning English Letters");
+	   load(e);
+	   });
+	   
+	   window.addEventListener("unload",function(e){
+	    alert("Bye!!");
+	      unload(e);
+		  });
+            
+            
+			   function generatebutton(e){
+			   c=c+1;
+	        localStorage.setItem("click in generate btn","date of event"+Date()+" type of event "+e.type+" target event "+e.target+" number click "+c);
+		    localStorage.getItem("click in generate btn");
+          
+	   }
+	   
+	   var c1=0;
+	   	   function Letterbutton(e){
+			c1=c1+1;
+	        localStorage.setItem("click in letter btn","date of event"+Date()+" type of event "+e.type+" target event "+e.target+" number click "+c1);
+		    localStorage.getItem("click in letter btn");
+  
+	   }
+	   
+	     function load(e){
+	        localStorage.setItem("load","target of unload event"+e.target+"type of unload event"+e.type+"date of unload event"+Date());
+            localStorage.getItem("load");
+        
+	   }
+	   
+	    function unload(e){
+	        localStorage.setItem("unload","target of unload event"+e.target+"type of unload event"+e.type+"date of unload event"+Date());
+            localStorage.getItem(" unload ");	 
+	       }
+	    setInterval(function clear(e){
+	    localStorage.removeItem("click in generate btn");
+	    localStorage.removeItem("click in letter btn");
+            localStorage.removeItem("load");
+            localStorage.removeItem("unload");
+	   },20000);
+	   
+	   
+        </script>
+    
+    </body>
+</html>
